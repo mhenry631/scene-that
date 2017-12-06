@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>SceneThat</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="bootstrap_4.0.0_beta/dist/css/bootstrap.css" crossorigin="anonymous">
+	<!-- Bootstrap Icon Font -->
+	<link rel="stylesheet" href="open-iconic-master/font/css/open-iconic-bootstrap.css" crossorigin="anonymous">
+	<!-- Font Awesome CSS -->
+	<link rel="stylesheet" type="text/css" href="styles/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!-- Custom Page Styles -->
+	<link rel="stylesheet" type="text/css" href="styles/home.css">
+</head>
+
+<body>
+
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-expand-sm fixed-top" data-spy="affix" data-offset-top="400">
+		
+		<!-- Brand (Top Left of Navbar) -->
+  		<a class="navbar-brand" href="#">SceneThat</a>
+  		
+  		<!-- Navbar Toggle Button for Collapsed Nav (data-target = div id for collapsible content ="navbarNavAltMarkup") -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#expandedNav" aria-controls="expandedNav" aria-expanded="false" aria-label="Toggle navigation">
+			<!-- Toggler Icon -->
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<!-- End Navbar Toggle Button -->
+
+  		<!-- Collapsible Navbar Content (Replaced with Toggle Button Above) -->
+  		<div class="collapse navbar-collapse" id="expandedNav">
+  			
+  			<!-- Left Side Links (mr-auto) -->
+		    <div class="navbar-nav mr-auto">
+		    	<a class="nav-item nav-link" href="#search">Search</a>
+		    	<a class="nav-item nav-link" href="#">Discover</a>
+		    	<a class="nav-item nav-link" href="#">About</a>
+		    	<a class="nav-item nav-link" href="#">Contact</a>
+		    </div>
+		    <!-- End Left Side Links -->
+		    
+		    <!-- Right Side Links (ml-auto) -->
+		    <ul class="navbar-nav ml-auto">
+		    	<li class="nav-item"><a class="nav-link" href="#loginModal" data-toggle="modal" data-target="#loginModal">Log In</a></li>
+		    	<li class="nav-item"><a class="nav-link" href="#">Register</a></li>
+	    	</ul>
+	    	<!-- End Right Side Links -->
+
+		</div>
+		<!-- End Collapsible Navbar Content -->
+
+	</nav>
+	<!-- End Navigation bar -->
+
+	<!-- Main -->
+
+		<!-- Welcome Text & Log-In/Register Buttons Overlaying Jumbotron Image -->
+		<div class="image-jumbo">
+			<div class="row">
+			    <div class="container col-md-6 offset-md-3" align="center">
+			    	<!-- Welcome Message -->
+			    	<h1 style="color: #00ffbf;">Welcome to SceneThat.</h1>
+			    	<!-- Log-In Button -->
+			    	<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#loginModal">Log In</button>
+			    	<!-- Register Button -->
+			    	<button type="button" class="btn btn-outline-primary">Register</button>
+			    </div>
+			</div>
+
+			<div class="row" style="position:absolute;bottom:0;width:100%;margin-left:5px;margin-right:5px;">
+				<div class="container col-md-4 offset-md-4" align="center">
+					<a href="#search" class="btn btn-outline-primary" id="start-exp-btn">
+						<h3>Start Exploring</h3>
+						<br>
+						<span class="oi oi-chevron-bottom"></span>
+					</a>		
+				</div>
+			</div>
+		</div>
+		<!-- End Welcome Text & Log-In/Register Buttons Overlaying Jumbotron Image -->
+
+
+		<!-- Login Modal -->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Log In To SceneThat</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+	              	<div class="form-group">
+	                	<label for="username" class="control-label">Username</label>
+	                  	<input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter your username" placeholder="example@gmail.com">
+	                  	<span class="help-block"></span>
+	              	</div>
+					<div class="form-group">
+						<label for="password" class="control-label">Password</label>
+						<input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+						<span class="help-block"></span>
+					</div>
+	              	<div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
+	              	<p>Don't have a SceneThat account?&nbsp;&nbsp;<a href="" style="color:#00cc99;">Register Here.</a></p>
+	          	</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="submit" class="btn btn-primary">Log In</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<!-- End Login Modal -->
+
+
+		<!-- Search Area -->
+		<div class="container" style="margin-top:25px;height:100px;margin-bottom:25px;" id="search">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="input-group input-group-lg" id="sizing-addon-1">
+						<span class="input-group-addon"><span class="oi oi-magnifying-glass"></span></span>
+						<input type="text" class="form-control" id="search-input" placeholder="Start Searching for Content..." aria-label="Username" aria-describedby="sizing-addon1">
+						<span class="input-group-btn">
+		        			<button class="btn btn-primary" type="button" id="search-btn">Go!</button>
+		      			</span>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-4 offset-md-4" align="center">
+					<button type="button" class="btn btn-link">+ More Options</button>
+				</div>
+			</div>
+		</div>
+		<!-- End Search Area -->
+
+
+		<!-- In Theatres -->
+		<div class="container home-content" height="600px">
+			<div class="row">
+				<h4>In Theatres</h3>
+			</div>
+			<div class="row" id="movies-in-theatres">
+				<!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+				  <div class="carousel-inner">
+				    <div class="carousel-item active">
+				    	<div class="row">
+				    		<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      		</div>
+				    </div>
+				    <div class="carousel-item">
+				      <div class="row">
+				    		<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      		</div>
+				    </div>
+				    <div class="carousel-item">
+				      <div class="row">
+				    		<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      		</div>
+				    </div>
+				  </div>
+				  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div> -->
+
+	    		<div class="col-md-3" id="it-1">
+	      			
+      			</div>
+      			<div class="col-md-3" id="it-2">
+	      			
+      			</div>
+      			<div class="col-md-3" id="it-3">
+	      			
+      			</div>
+      			<div class="col-md-3" id="it-4">
+	      			
+      			</div>
+
+			</div>
+		</div>
+		<!-- End In Theatres -->
+
+
+		<!-- On TV Tonight -->
+		<div class="container home-content" height="600px" style="margin-top:30px;">
+			<div class="row">
+				<h4>On Television Tonight</h3>
+			</div>
+			<div class="row">
+				<!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+				  <div class="carousel-inner">
+				    <div class="carousel-item active">
+				    	<div class="row">
+				    		<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      		</div>
+				    </div>
+				    <div class="carousel-item">
+				      <div class="row">
+				    		<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      		</div>
+				    </div>
+				    <div class="carousel-item">
+				      <div class="row">
+				    		<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      			<div class="col-md-3">
+				      			<img class="d-block w-100" src="images/bg.jpg" alt="First slide">
+			      			</div>
+			      		</div>
+				    </div>
+				  </div>
+				  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div> -->
+
+				<div class="col-xs-12" style="margin-top: 30px;">
+					<h6>Coming Soon</h6>
+				</div>
+			</div>
+		</div>
+		<!-- End On TV Tonight -->
+
+		<div id="searchResultsArea">
+
+		</div>
+
+	</main>
+	<!-- End Main -->
+
+	<!-- Footer -->	
+ 	<footer>
+		<div class="footer-top"> 
+           <div class="container" align="center">
+           	<div class="row">
+             <div class="col-lg-2 offset-lg-2 col-xs-12 text-center">
+                 <a href="#"><i class="fa fa-facebook fa-2x"></i>Facebook</a>
+             </div>
+              <div class="col-lg-2 col-xs-12 text-center">
+                   <a href=""><i class="fa fa-twitter fa-2x"></i>Twitter</a>
+             </div>
+              <div class="col-lg-2 col-xs-12 text-center">
+                 <a href="#"><i class="fa fa-github fa-2x"></i>Github</a>
+             </div>
+              <div class="col-lg-2 col-xs-12 text-center">
+                 <a href="#"><i class="fa fa-google-plus fa-2x"></i>Google</a>
+             </div>
+         </div>
+           </div> 
+        </div>  
+        
+        <div class="container" style="border-top:1px solid #00ffbf;">
+            <div class="row text-center" align="center">   
+                <div class="col-lg-8 offset-lg-2">
+                      <ul class="menu" style="padding-top:25px;">
+                                 
+                             <li>
+                                <a href="#">Search</a>
+                              </li>
+                                   
+                              <li>
+                                 <a href="#">Discover</a>
+                              </li>
+                                   
+                              <li>
+                                <a href="#">Recommendations</a>
+                              </li>
+                                   
+                              <li>
+                                 <a href="#">About</a>
+                              </li>
+                                   
+                              <li>
+                                <a href="#">Contact</a>
+                             </li>
+                   
+                        </ul>
+                </div>
+            </div>
+        </div>
+
+	</footer>
+	<!-- End Footer -->
+
+
+	<!-- Import JQuery, Popper.js, and Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="js/home.js"></script>
+	<script type="text/javascript" src="js/search.js"></script>
+	<script type="text/javascript" src="js/inTheatres.js"></script>
+
+</body>
+
+</html>
